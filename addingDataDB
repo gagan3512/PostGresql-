@@ -1,0 +1,40 @@
+// CREATE TABLE AND ADDING DATA
+
+studentdb=# create table students(name text,address text,age int,number int);
+CREATE TABLE
+studentdb=# \l
+                                                 List of databases
+   Name    |  Owner   | Encoding |          Collate           |           Ctype            |   Access privileges
+-----------+----------+----------+----------------------------+----------------------------+-----------------------
+ Tech      | postgres | UTF8     | English_United States.1252 | English_United States.1252 |
+ blog      | postgres | UTF8     | English_United States.1252 | English_United States.1252 |
+ postgres  | postgres | UTF8     | English_United States.1252 | English_United States.1252 |
+ studentdb | postgres | UTF8     | English_United States.1252 | English_United States.1252 |
+ template0 | postgres | UTF8     | English_United States.1252 | English_United States.1252 | =c/postgres          +
+           |          |          |                            |                            | postgres=CTc/postgres
+ template1 | postgres | UTF8     | English_United States.1252 | English_United States.1252 | =c/postgres          +
+           |          |          |                            |                            | postgres=CTc/postgres
+(6 rows)
+
+
+studentdb=# \d
+          List of relations
+ Schema |   Name   | Type  |  Owner
+--------+----------+-------+----------
+ public | students | table | postgres
+(1 row)
+
+
+studentdb=# insert into students(name,address,atge,number) values ('John', 'LA', '34','9999999');
+ERROR:  column "atge" of relation "students" does not exist
+LINE 1: insert into students(name,address,atge,number) values ('John...
+                                          ^
+studentdb=# insert into students(name,address,age,number) values ('John', 'LA', '34','9999999');
+INSERT 0 1
+studentdb=# insert into students(name,address,age,number) values ('rob', 'NY', '44','9999999888');
+ERROR:  value "9999999888" is out of range for type integer
+LINE 1: ...ame,address,age,number) values ('rob', 'NY', '44','999999988...
+                                                             ^
+studentdb=# insert into students(name,address,age,number) values ('rob', 'NY', '44','9999888');
+INSERT 0 1
+studentdb=#
