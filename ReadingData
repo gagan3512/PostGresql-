@@ -1,0 +1,30 @@
+studentdb-# select * from students;
+ERROR:  syntax error at or near "select"
+LINE 2: select * from students;
+        ^
+studentdb=# SELECT * from students;
+ name | address | age | number
+------+---------+-----+---------
+ John | LA      |  34 | 9999999
+ rob  | NY      |  44 | 9999888
+(2 rows)
+
+
+studentdb=# SELECT * from students where age = 45;
+ name | address | age | number
+------+---------+-----+--------
+(0 rows)
+
+
+studentdb=# SELECT * from students where age = 44;
+ name | address | age | number
+------+---------+-----+---------
+ rob  | NY      |  44 | 9999888
+(1 row)
+
+
+studentdb=# SELECT name  from students where age = 44;
+ name
+------
+ rob
+(1 row)
